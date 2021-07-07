@@ -18,12 +18,6 @@ class BackHandlerHelper
             Log.d("xpandroid", "fragmentList size=${fragmentList.size}")
             fragmentList.forEach {
                 return nextHandler(it) //                return if (nextHandler(it))
-                //                { //优先处理子fragment的返回键
-                //                    true
-                //                } else
-                //                {
-                //                    isFragmentBackHandled(it)
-                //                }
             }
 
             if (fragmentManager.backStackEntryCount > 0)
