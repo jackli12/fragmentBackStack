@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 
 open class BaseActivity : AppCompatActivity()
 {
-//    protected var fragmentBackHandler: FragmentBackHandler? = null
 
     /**
      * 基类处理返回键

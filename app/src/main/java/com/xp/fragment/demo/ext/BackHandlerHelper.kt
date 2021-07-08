@@ -50,7 +50,7 @@ class BackHandlerHelper
          */
         private fun isFragmentBackHandled(fragment: Fragment): Boolean
         {
-            return fragment.isVisible() && fragment.getUserVisibleHint() && fragment is FragmentBackHandler && fragment.onFragmentBack()
+            return fragment.isVisible && fragment.userVisibleHint && fragment is FragmentBackHandler && fragment.onFragmentBack()
         }
 
     }

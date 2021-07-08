@@ -2,15 +2,20 @@ package com.xp.fragment.demo.ext
 
 import androidx.fragment.app.Fragment
 
-open class BaseFragment : Fragment(), FragmentBackHandler
-{
-    override fun onFragmentBack(): Boolean
-    {
+abstract class BaseFragment : Fragment(), FragmentBackHandler {
+
+    /**
+     * 是否需要懒加载
+     */
+    open fun needLazy(): Boolean {
         return false
     }
 
-    fun backStack()
-    {
+    override fun onFragmentBack(): Boolean {
+        return false
+    }
+
+    fun backStack() {
         parentFragmentManager.popBackStack()
     }
 }

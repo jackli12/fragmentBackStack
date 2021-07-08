@@ -1,5 +1,6 @@
 package com.xp.fragment.demo
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.xp.fragment.demo.ext.BaseFragment
+import com.xp.fragment.demo.lazy.LazyActivity
 
 class PersonFragment : BaseFragment()
 {
@@ -16,12 +18,15 @@ class PersonFragment : BaseFragment()
         val view = inflater.inflate(R.layout.person_fragment, container, false)
         val button = view.findViewById<Button>(R.id.show_second)
         button.setOnClickListener {
-            val secondFragment = SecondFragment()
-            val tag="secondFragment"
-            childFragmentManager.beginTransaction()
-                .replace(R.id.second_container, secondFragment,tag)
-                .addToBackStack(tag)
-                .commitAllowingStateLoss()
+            val intent=Intent(activity,LazyActivity::class.java)
+            activity?.startActivity(intent)
+
+//            val secondFragment = SecondFragment()
+//            val tag="secondFragment"
+//            childFragmentManager.beginTransaction()
+//                .replace(R.id.second_container, secondFragment,tag)
+//                .addToBackStack(tag)
+//                .commitAllowingStateLoss()
         }
         return view
     }
