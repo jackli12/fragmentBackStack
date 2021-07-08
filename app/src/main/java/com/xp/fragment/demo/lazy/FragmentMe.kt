@@ -28,7 +28,7 @@ class FragmentMe : BaseFragment() {
 
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
-        Log.d(TAG, "onHiddenChanged")
+        Log.d(TAG, "onHiddenChanged hidden=$hidden")
     }
 
     override fun getUserVisibleHint(): Boolean {

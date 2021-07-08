@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.xp.fragment.demo.ext.BaseFragment
 import com.xp.fragment.demo.lazy.LazyActivity
+import com.xp.fragment.demo.lazy.LazyActivity2
 
 class PersonFragment : BaseFragment()
 {
@@ -27,6 +28,11 @@ class PersonFragment : BaseFragment()
 //                .replace(R.id.second_container, secondFragment,tag)
 //                .addToBackStack(tag)
 //                .commitAllowingStateLoss()
+        }
+
+        view.findViewById<Button>(R.id.add_fragment).setOnClickListener {
+            val intent=Intent(activity, LazyActivity2::class.java)
+            activity?.startActivity(intent)
         }
         return view
     }

@@ -26,7 +26,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:text="personFragment" />
+        android:text="viewpager" />
+    <Button
+        android:id="@+id/add_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="add ad show" />
 
     <FrameLayout
         android:id="@+id/second_container"

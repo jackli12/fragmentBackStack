@@ -11,8 +11,6 @@ import com.xp.fragment.demo.ext.BaseFragment
 
 class FragmentFind : BaseFragment() {
     val TAG = "xf" + this.javaClass.simpleName
-    var isInflate = false
-    var rootView: View? = null
 
     override fun needLazy(): Boolean {
         return true
@@ -36,10 +34,15 @@ class FragmentFind : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         Log.d(TAG, "onViewCreated")
     }
-
+    /**
+     * 只适用add和show，不适用viewpager嵌套fragment
+     */
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
-        Log.d(TAG, "onHiddenChanged")
+//        if(!hidden){
+//            lazyInflate()
+//        }
+        Log.d(TAG, "onHiddenChanged hidden=$hidden")
     }
 
     override fun getUserVisibleHint(): Boolean {
@@ -47,16 +50,13 @@ class FragmentFind : BaseFragment() {
         return super.getUserVisibleHint()
     }
     /**
-     * 该方法已经标注为失效，应该是有使用局限性
+     * 该方法已经标注为失效，应该是有使用局限性,fragment add和show时，该函数不会执行
      */
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
-        if (isVisibleToUser) {
-            if (!isInflate && needLazy()) {
-                isInflate = true
-                lazyView()
-            }
-        }
+//        if (isVisibleToUser) {
+//            lazyInflate()
+//        }
         Log.d(TAG, "setUserVisibleHint isVisibleToUser=$isVisibleToUser")
     }
 
@@ -65,7 +65,8 @@ class FragmentFind : BaseFragment() {
         Log.d(TAG, "onResume")
     }
 
-    private fun lazyView() {
+    override fun lazyView() {
+        super.lazyView()
         Log.d(TAG, "########### lazyView ##########")
         val viewStub = rootView?.findViewById<ViewStub>(R.id.stub_find)
         viewStub?.inflate()

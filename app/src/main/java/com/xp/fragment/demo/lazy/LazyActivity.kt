@@ -29,7 +29,7 @@ class LazyActivity : BaseActivity() {
         list.add(find)
         list.add(me)
         mAdapter = ViewPagerAdapter(supportFragmentManager, list)
-        viewpager1?.offscreenPageLimit=1
+        viewpager1?.offscreenPageLimit=2
         viewpager1?.adapter = mAdapter
 
 
