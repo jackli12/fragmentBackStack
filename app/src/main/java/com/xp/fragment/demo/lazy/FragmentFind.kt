@@ -12,6 +12,8 @@ import com.xp.fragment.demo.ext.BaseFragment
 class FragmentFind : BaseFragment() {
     val TAG = "xf" + this.javaClass.simpleName
 
+    private var isInflate=false
+
     override fun needLazy(): Boolean {
         return true
     }
@@ -66,8 +68,11 @@ class FragmentFind : BaseFragment() {
     }
 
     override fun lazyView() {
-        super.lazyView()
-        Log.d(TAG, "########### lazyView ##########")
+        if(isInflate){
+           return
+        }
+        isInflate=true
+        Log.d(TAG, "FragmentFind lazyView ##########")
         val viewStub = rootView?.findViewById<ViewStub>(R.id.stub_find)
         viewStub?.inflate()
     }

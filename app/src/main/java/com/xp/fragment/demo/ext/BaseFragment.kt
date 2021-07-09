@@ -6,10 +6,9 @@ import android.view.View
 import androidx.fragment.app.Fragment
 
 abstract class BaseFragment : Fragment(), FragmentBackHandler {
-    var isInflate = false
     var rootView: View? = null
     var callResume = false
-    var mIsVisibleToUser = false
+    var mIsVisibleToUser = true
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -66,8 +65,8 @@ abstract class BaseFragment : Fragment(), FragmentBackHandler {
 
     override fun onDestroy() {
         super.onDestroy()
-        callResume = false
-        mIsVisibleToUser=false
+//        callResume = false
+//        mIsVisibleToUser=false
     }
 
 }

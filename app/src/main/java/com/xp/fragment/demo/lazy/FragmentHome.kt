@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewStub
+import android.widget.TextView
 import android.widget.Toast
 import com.xp.fragment.demo.R
 import com.xp.fragment.demo.ext.BaseFragment
@@ -17,6 +18,8 @@ import com.xp.fragment.demo.ext.BaseFragment
  */
 class FragmentHome : BaseFragment() {
     val TAG = "xf" + this.javaClass.simpleName
+    private var isInflate = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate")
@@ -68,9 +71,15 @@ class FragmentHome : BaseFragment() {
     }
 
     override fun lazyView() {
-        super.lazyView()
+        if (isInflate) {
+            return
+        }
+        isInflate = true
+        Log.d(TAG, "FragmentHome lazyView ##########")
         val stub = rootView?.findViewById<ViewStub>(R.id.stub_home)
-        stub?.inflate()
+        val view = stub?.inflate()
+        val title = view?.findViewById<TextView>(R.id.home_title)
+        title?.text = "首页懒加载执行完成 ${Math.random() * 5}"
     }
 
 }
